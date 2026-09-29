@@ -16,14 +16,14 @@ CREATE TABLE Payers(
 CREATE TABLE Transactions(
     TransactionId NVARCHAR(50) PRIMARY KEY,
     TranactionTimestamp DATETIME2 NOT NULL,
-    Channel NVARCHAR(50) -- check whether it can be an Enum
-    Amount DECIMAL(18,2) NOT NULL
-    Currency NCHAR(3) NOT NULL -- check whether it can be an Enum
+    Channel NVARCHAR(50), -- check whether it can be an Enum
+    Amount DECIMAL(18,2) NOT NULL,
+    Currency NCHAR(3) NOT NULL,-- check whether it can be an Enum
     
     -- Foreign keys definition 
-    MerchantId NVARCHAR(50) NOT NULL
-    PayerAccountID NVARCHAR(50) NOT NULL
+    MerchantId NVARCHAR(50) NOT NULL,
+    PayerAccountID NVARCHAR(50) NOT NULL,
 
-    CONSTRAINT FK_Transactions_Merchants FOREIGN KEY (MerchantID) REFERENCES Merchants(MerchantID),
+    CONSTRAINT FK_Transactions_Merchants FOREIGN KEY (MerchantId) REFERENCES Merchants(MerchantId),
     CONSTRAINT FK_Transactions_Payers FOREIGN KEY (PayerAccountID) REFERENCES Payers(PayerAccountID)
 );
