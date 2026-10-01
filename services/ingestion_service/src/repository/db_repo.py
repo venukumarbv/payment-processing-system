@@ -46,8 +46,16 @@ class TransactionRepository:
 
             # INSERT Transaction table
             session.execute(
-                text("""
-                INSERT INTO Transactions (TransactionID, TransactionTimestamp, Channel, Amount, Currency, MerchantID, PayerAccountID, StatusID) # noqa: E501
+                text("""INSERT INTO Transactions (
+                TransactionID,
+                TransactionTimestamp,
+                Channel,
+                Amount,
+                Currency,
+                MerchantID,
+                PayerAccountID,
+                StatusID
+                )
                 VALUES (:tid, :ts, :ch, :amt, :cur, :mid, :pid, 2)
             """),
                 {
