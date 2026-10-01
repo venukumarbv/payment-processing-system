@@ -68,10 +68,12 @@ class TransactionRepository:
                     "pid": txn.payer.account_id,
                 },
             )
-
+            session.commit()
+            return True
         except Exception as e:
             session.rollback()
             print(f"DB Error: {e}")
+            return False
 
         finally:
             session.close()
