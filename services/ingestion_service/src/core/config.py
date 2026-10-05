@@ -26,5 +26,10 @@ class Config:
     DB_PASSWORD = os.getenv("DB_PASSWORD")
     DB_DRIVER = "{ODBC Driver 17 for SQL Server}"
 
+    server_formatted = DB_SERVER.replace(",", ":") if DB_SERVER else ""
     # SQLAlchemy Connection String
-    DATABASE_URL = f"mssql+pyodbc://{DB_USER}:{DB_PASSWORD}@{DB_SERVER}/{DB_NAME}?driver={DB_DRIVER}"  # noqa: E501
+    # DATABASE_URL = f"mssql+pyodbc://{DB_USER}:{DB_PASSWORD}@{DB_SERVER}/{DB_NAME}?driver={DB_DRIVER}"  # noqa: E501
+    # DATABASE_URL = (
+    #     f"mssql+pyodbc://{DB_USER}:{DB_PASSWORD}@{server_formatted}/{DB_NAME}"
+    #     f"?driver={DB_DRIVER}"
+    # )

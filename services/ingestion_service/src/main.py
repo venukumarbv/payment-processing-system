@@ -20,15 +20,13 @@ kafka_config = {
     "sasl.username": Config.KAFKA_API_KEY,
     "sasl.password": Config.KAFKA_API_SECRET,
     "group.id": Config.KAFKA_GROUP_ID,
-    "auto.offset.reset": "earliest",
+    "auto.offset.reset": "latest",
 }
 
 # Schema registry Config
 sr_conf = {
     "url": Config.SCHEMA_REGISTRY_URL,
-    "basic.auth.user.info": f"{
-        Config.SCHEMA_REGISTRY_API_KEY}: {Config.SCHEMA_REGISTRY_API_SECRET
-                                          }",
+    "basic.auth.user.info": f"{Config.SCHEMA_REGISTRY_API_KEY}:{Config.SCHEMA_REGISTRY_API_SECRET}",
 }
 
 # Consumer
@@ -69,6 +67,8 @@ def process_message(msg_value):
     try:
         # Deserialize binary Avro to Python Dict
         data = avro_deserializer(msg_value, None)
+
+        logger.info(f"Received transaction: {data}")
 
         # Validate with Pydantic
         txn = TransactionModel(**data)
