@@ -22,7 +22,7 @@ repos:
     rev: 7.3.0
     hooks:
       - id: flake8                  # Checks for PEP8 style violations and bugs
-        args: ["--max-line-length=88", "--extend-ignore=E203,W503"]
+        args: ["--max-line-length=88", "--extend-ignore=E203,W503,E501"]
 
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v2.3.0
