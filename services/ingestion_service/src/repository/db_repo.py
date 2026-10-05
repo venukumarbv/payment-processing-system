@@ -85,5 +85,5 @@ class TransactionRepository:
                 return True
             except Exception as e:
                 trans.rollback()
-                print(f"❌ DB Error: {e}")
+                print(f"DB Error: {e}")
                 return False
