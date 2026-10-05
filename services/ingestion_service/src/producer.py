@@ -28,11 +28,9 @@ def delivery_report(err, msg):
     delivery result. Delivery reports are triggered by poll() or flush().
     """
     if err is not None:
-        logger.error(f"❌ Delivery failed for record {msg.key()}: {err}")
+        logger.error(f"Delivery failed for record {msg.key()}: {err}")
     else:
-        logger.info(
-            f"✅ Message delivered to {msg.topic()} [partition {msg.partition()}]"
-        )
+        logger.info(f"Message delivered to {msg.topic()} [partition {msg.partition()}]")
 
 
 def produce_test_messages():
@@ -162,7 +160,7 @@ def produce_test_messages():
 
     # IMPORTANT: flush() blocks until all messages are actually sent to the server
     producer.flush()
-    logger.info("✅ All test messages processed. Check your Consumer logs!")
+    logger.info("All test messages processed. Check your Consumer logs!")
 
 
 if __name__ == "__main__":
