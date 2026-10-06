@@ -6,7 +6,7 @@ from src.core.config import Config
 # 1. Build the raw ODBC connection string exactly as the Driver expects
 # We use f-strings to ensure no spaces or weird characters are added
 connection_string = (
-    f"DRIVER={{ODBC Driver 17 for SQL Server}};"
+    f"DRIVER={{ODBC Driver 18 for SQL Server}};"
     f"SERVER={Config.DB_SERVER};"
     f"DATABASE={Config.DB_NAME};"
     f"UID={Config.DB_USER};"
