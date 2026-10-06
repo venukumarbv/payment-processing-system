@@ -48,7 +48,7 @@ BEGIN
         UserID INT PRIMARY KEY IDENTITY(1,1),
         Username NVARCHAR(50) UNIQUE NOT NULL,
         HashedPassword NVARCHAR(255) NOT NULL,
-        RoleID INT NOT NULL DEFAULT 2,
+        RoleID INT NOT NULL,
         CreatedAt DATETIME2 DEFAULT GETDATE(),
         CONSTRAINT FK_Users_Role FOREIGN KEY (RoleID) REFERENCES UserRoles(RoleID)
     );
@@ -66,7 +66,7 @@ BEGIN
         MerchantID NVARCHAR(50) NOT NULL,
         PayerAccountID NVARCHAR(50) NOT NULL,
         StatusID INT NOT NULL DEFAULT 1,
-        
+
         CONSTRAINT FK_Transactions_Merchants FOREIGN KEY (MerchantID) REFERENCES Merchants(MerchantID),
         CONSTRAINT FK_Transactions_Payers FOREIGN KEY (PayerAccountID) REFERENCES Payers(PayerAccountID),
         CONSTRAINT FK_Transactions_Status FOREIGN KEY (StatusID) REFERENCES TransactionStatuses(StatusID)
